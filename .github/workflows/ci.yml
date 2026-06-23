@@ -39,7 +39,7 @@ jobs:
                 username: ${{ vars.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-        # Build the Dockerfile and push the image to Docker Hub
+        ## Build the Dockerfile and push the image to Docker Hub
             - name: Build and push Docker image
               uses: docker/build-push-action@v7
               with:

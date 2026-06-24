@@ -46,9 +46,7 @@ jobs:
                 context: ./frontend
                 push: true
                 tags: ${{ secrets.DOCKER_USERNAME }}/devboard-frontend:latest
-
-
-    
+                   
     backend:
       runs-on: ubuntu-latest
       steps:

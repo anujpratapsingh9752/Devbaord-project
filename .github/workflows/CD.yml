@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Deploy with Docker Compose
+      - name: Deploy containers
         run: |
           docker compose pull
           docker compose up -d

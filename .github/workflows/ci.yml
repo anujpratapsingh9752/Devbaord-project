@@ -89,12 +89,6 @@ jobs:
             tags: ${{ secrets.DOCKER_USERNAME }}/devboard-backend:latest
 
     deploy:
-<<<<<<< HEAD
-        needs: [frontend,backend]
-        uses: ./.github/workflows/cd.yml
-        secrets: inherit
-=======
       needs: [frontend,backend]
       uses: ./.github/workflows/CD.yml
       secrets: inherit
->>>>>>> advanced

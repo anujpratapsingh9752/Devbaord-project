@@ -1,0 +1,45 @@
+# Goal - I have to do SAST for my code
+name: Code quality
+
+on:
+    workflow_call:
+
+jobs:
+    sast:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout code
+            uses: actions/checkout@v7
+
+          - name: Use Node.js 
+            uses: actions/setup-node@v6
+            with:
+              node-version: "20"
+              cache: 'npm' # Automates package caching for faster subsequent runs 
+              cache-dependency-path: 'frontend/package-lock.json'
+
+          - name: Install npm packages
+            run: npm install
+            working-directory: frontend
+
+          - name: Run linter 
+            run: npm run lint
+            working-directory: frontend
+
+          - name: Setup Go
+            uses: actions/setup-go@v6
+            with:
+              go-version: "1.23"
+              cache: true
+              cache-dependency-path: backend/go.sum
+
+          - name: Install Project Dependencies
+            run: go mod download
+            working-directory: backend
+
+          - name: Run golangci-lint
+            uses: golangci/golangci-lint-action@v6
+            with:
+              version: latest
+              args: ./...
+              working-directory: backend

@@ -10,4 +10,5 @@ spec:
     - protocol: TCP
       port: 30080
       targetPort: 4173
+  type: NodePort
 
